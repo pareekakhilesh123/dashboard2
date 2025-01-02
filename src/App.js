@@ -1,14 +1,31 @@
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
+import Layouts from './Pages/Layouts';
+import Analytics from './Pages/Analytics';
 
-import './App.css';
+
+const router = createBrowserRouter(
+  [
+    {path:"/",
+      element: <Dashboard />
+    },
+    {path:"/analytics",
+      element: <Analytics/>
+    },
+    {path:"/layouts",
+      element: <Layouts />
+    },
+  ]
+);
+ 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-     Jai Shree Ram
-     <h1>JAi Shreee Ram</h1>
-      </header>
-    </div>
+   <>
+  <RouterProvider router={router} />
+
+   </>
   );
 }
 
