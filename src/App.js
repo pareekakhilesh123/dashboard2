@@ -7,7 +7,7 @@ import Analytics from './Pages/Analytics';
 
 const router = createBrowserRouter(
   [
-    {path:"/",
+    {path:"/dashboard2",
       element: <Dashboard />
     },
     {path:"/analytics",
