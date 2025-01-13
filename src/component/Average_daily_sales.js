@@ -1,8 +1,16 @@
 import React from 'react'
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
+import   { useState, useEffect } from 'react';
 
 import { Card, CardContent, Typography, Box, Stack } from '@mui/material';
 function Average_daily_sales() {
+   const [averagesalesData, setData] = useState({});
+   useEffect(() => {
+       fetch('http://localhost:3000/api/averagesales' ) 
+         .then((response) => response.json())
+         .then((data) => setData(data))
+         .catch((error) => console.error('Error fetching data:', error));
+     }, []);
   return (
     <div> 
   
@@ -21,18 +29,18 @@ function Average_daily_sales() {
                   Average Daily Sales
                 </Typography>
                 <Typography variant="h4" fontWeight="bold">
-                  $28,450
+                  ${averagesalesData.sale}
                 </Typography>
-                <Stack direction="row" sx={{ width: '100%' }}>
+                {/* <Stack direction="row" sx={{ width: '100%' }}>
                   <Box sx={{ flexGrow: 1 }}>
                     <SparkLineChart
-                      data={[3, 5, 7, 4, 6]}
+                      data={averagesalesData.data}
                       height={100}
                       curve="natural"
                       area
                     />
                   </Box>
-                </Stack>
+                </Stack> */}
               </CardContent>
               
             </Card>

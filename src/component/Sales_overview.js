@@ -1,8 +1,18 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { BarChart } from '@mui/x-charts/BarChart';
+import   { useState, useEffect } from 'react';
+
 
 function Sales_overview() {
+  const [saleoverviewData, setData] = useState({});
+
+     useEffect(() => {
+         fetch('http://localhost:3000/api/saleoverview' ) 
+           .then((response) => response.json())
+           .then((data) => setData(data))
+           .catch((error) => console.error('Error fetching data:', error));
+       }, []);
   return (
     <div>
       <Box
@@ -31,7 +41,7 @@ function Sales_overview() {
             </Typography>
           
             <Typography variant="h4" fontWeight="bold">
-              $42.5k
+              $  {saleoverviewData.saleoverview}
             </Typography>
             
             <Typography
@@ -42,13 +52,13 @@ function Sales_overview() {
                 fontWeight: 'bold',
               }}
             >
-              +18.2%
+              +{saleoverviewData.increase}%
             </Typography>
           
             <BarChart
               series={[
-                { data: [3], stack: 'A' },
-                { data: [2], stack: 'A' },
+                { data: [saleoverviewData.itemA], stack: 'A' },
+                { data: [saleoverviewData.itemB], stack: 'A' },
               ]}
               width={300} 
               height={110} 

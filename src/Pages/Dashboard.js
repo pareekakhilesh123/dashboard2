@@ -11,7 +11,7 @@ import Sales_overview from '../component/Sales_overview';
 
 function Dashboard() {
   return (
-    <div className="sideNav">
+    <div>
       <Box sx={{ display: 'flex' }}>
         {/* Sidebar */}
         <Sidebar />

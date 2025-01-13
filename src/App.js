@@ -4,6 +4,7 @@ import Dashboard from './Pages/Dashboard';
 import Layouts from './Pages/Layouts';
 import Analytics from './Pages/Analytics';
 import SignIn from './Pages/SignIn';
+import UpdateStudent from './Pages/UpdateStudent';
 
 
 const router = createBrowserRouter(
@@ -22,6 +23,12 @@ const router = createBrowserRouter(
     },
     {path:"/signin",
       element: <SignIn />
+   
+    },
+    {
+      
+      path:"/studentdata/:id",
+      element: <UpdateStudent/>
    
     },
   ]
